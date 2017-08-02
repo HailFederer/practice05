@@ -1,17 +1,25 @@
 package prob5;
 
-public class MyStack {
+public class MyStack <T>{
 
-	private String[] stackArr;
+	private T[] stackArr;
 	private int index;
 	
-	public MyStack(int size) {
+	@SuppressWarnings("unchecked")
+	public MyStack() {
 		
-		stackArr = new String[size];
+		stackArr = (T[])new Object[10];
 		index = 0;
 	}
 	
-	public void push(String data) {
+	@SuppressWarnings("unchecked")
+	public MyStack(int size) {
+		
+		stackArr = (T[])new Object[size];
+		index = 0;
+	}
+	
+	public void push(T data) {
 		
 		if(index == stackArr.length){
 			sizeUp();
@@ -19,20 +27,21 @@ public class MyStack {
 		stackArr[index++] = data;
 	}
 	
-	private void sizeUp(){
+	private void sizeUp() {
 		
-		String[] sizeUpStackArr = new String[stackArr.length * 2];
+		@SuppressWarnings("unchecked")
+		T[] sizeUpStackArr = (T[])new Object[stackArr.length * 2];
 		System.arraycopy(stackArr, 0, sizeUpStackArr, 0, stackArr.length);
 		stackArr =  sizeUpStackArr;
 	}
 	
-	public String pop() throws MyStackException{
+	public T pop() throws MyStackException{
 		
 		if(isEmpty()){
 			throw new MyStackException("stack is empty");
 		}
 		
-		String popValue = stackArr[--index];
+		T popValue = stackArr[--index];
 		stackArr[index] = null;		// GC
 		
 		return popValue;
