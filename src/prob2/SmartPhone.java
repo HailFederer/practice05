@@ -4,7 +4,7 @@ public class SmartPhone extends MusicPhone {
 
 	@Override
 	public void execute(String function) {
-		if(function.equals("앱")){
+		if("앱".equals(function)){
 			executeApp();
 			return;
 		}

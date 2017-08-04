@@ -4,7 +4,7 @@ public class MusicPhone extends Phone {
 	
 	@Override
 	public void execute( String function ) {
-		if ( function.equals("음악") ) {
+		if ( "음악".equals(function) ) {
 			playMusic();
 			return;
 		}

@@ -2,10 +2,27 @@ package prob1;
 
 public class Sort {
 	
+	public static int[] bubbleSort(int[] array) {
+
+		int temp = 0;
+		int count =  array.length;
+		for(int j=0; j<count-1; j++){
+			for(int i=0; i<count-1-j; i++){
+				
+				if(array[i]<array[i+1]){
+					temp = array[i];
+					array[i] = array[i+1];
+					array[i+1] = temp;
+				}
+			}
+		}
+		
+		return array;
+	}
+	
 	public static void main(String[] arg) {
 	
 		int array[] = { 5, 9, 3, 8, 60, 20, 1 };
-		int temp = 0;
 		int count =  array.length;
 		
 		System.out.println( "Before sort." );
@@ -17,16 +34,7 @@ public class Sort {
 		//
 		// 정렬 알고리즘이 적용된 코드를 여기에 작성합니다.
 		// 
-		for(int j=0; j<count-1; j++){
-			for(int i=0; i<count-1-j; i++){
-				
-				if(array[i]<array[i+1]){
-					temp = array[i];
-					array[i] = array[i+1];
-					array[i+1] = temp;
-				}
-			}
-		}		
+		Sort.bubbleSort(array);
 		
 		System.out.println( "\nAfter Sort." );
 		for (int i = 0; i < count; i++) {
